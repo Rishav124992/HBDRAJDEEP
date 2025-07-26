@@ -1,0 +1,734 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+@font-face {
+    font-family: "prima";
+    src: url(fonts/Prima.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'dancing script';
+    src: url(fonts/dancing-script.ttf) format("truetype");
+    /* font-weight: normal;
+    font-style: normal; */
+}
+:root{
+--text:#f1f1f1;
+--secondary-text:#7bdff2;
+--third-text: #fff3b0;
+--box:#3a86ff;
+--secondary-box:#ffffffd9;
+--borders: #540b0e;
+--secondary-borders:#0f2027;
+--shadow: rgba(0, 0, 0, 0.5);
+}
+#decoration1 {
+  position: absolute;
+  top: 16%; 
+  left: 32%;
+  width: 10%;
+  height: 10%;
+  visibility: hidden;
+  filter: drop-shadow(0 0 2ps white);
+  z-index: 1;
+  animation: my_animation1 2s var(--d) forwards;
+}
+
+@keyframes my_animation1 {
+  0% {
+    visibility: hidden;
+    transform: rotate(0deg);
+    top: 0%;
+  }
+  100% {
+    visibility: visible;
+    transform: rotate(35deg);
+    top: 16%;
+  }
+}
+
+#edge1, #edge2, #edge3, #edge4 {
+    visibility: hidden;
+    z-index: 0;
+    animation: revaled 2s var(--d) linear forwards;
+}
+.ribbon1, .ribbon2, .ribbon3 {
+    position: absolute;
+    width: 28%;
+    height: 20%;
+    visibility: hidden;
+    z-index: -1;
+    top: -18%;
+    left: var(--left);
+    animation: fadein 2s var(--d) linear forwards;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.decorations{
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    animation: show_all 2s var(--d) linear forwards;
+}
+@keyframes show_all {
+    from {
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.decorations .star{
+    position: absolute;
+    text-align: center;
+    width: 10%;
+    height: 10%;
+    left: var(--left);
+    top: var(--top);
+    color: var(--c);
+    font-size: 35px;
+    filter: drop-shadow(0 0 2px white);
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+.decorations .heart{
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    left: var(--left);
+    top: var(--top);
+    color:red;
+    font-size: 40px;
+    text-align: center;
+    filter: drop-shadow(0 0 4px rgb(229, 169, 169));
+    animation: beat 1s infinite;
+}
+@keyframes beat {
+    0%, 100% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+.text_1{
+    position: absolute;
+    top: 23%;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 15%;
+}
+.border_flex{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42%;
+    height: 30%;
+    top: 30%;
+    left: 3%;
+}
+.border{
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.546);
+    width: 10%;
+    height: 10%;
+    top: 40%;
+    left: 5%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 50%;
+    visibility: hidden;
+    animation: scale_rectangle 3s cubic-bezier(0.23, 1, 0.320, 1) 5.5s forwards;
+}
+@keyframes scale_rectangle{
+    0%{
+        visibility: visible;
+        background-color: white;
+        width: 2.5%;
+        height: 5%;
+        top: 30%;
+        left: 60%;
+        border-radius: 50%;
+    }
+    50%{
+        background-color: transparent;
+        width: 2.5%;
+        height: 5%;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+    }
+    60%{
+        transform: scale(1);
+        border-radius: 30px;
+        width: 40%;
+        height: 30%;
+    }
+    100%{
+        visibility: visible;
+        transform: scale(1);
+        border-radius: 30px;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.579);
+    }
+}
+.border .txt_cnt{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    white-space: wrap;
+    color: var(--third-text);
+    margin: 2.5% 0 0 2.5%;
+    font-weight: bold;
+    font-size: 28px;
+    font-family: "dancing script";
+    text-align: left;
+}
+.button{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 15%;
+    height: 10%;
+    top: 80%;
+    left: 19%;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.655);
+    color: black;
+    font-size: 25px;
+    visibility: hidden;
+    animation: grow 1s  cubic-bezier(0.215, 0.610, 0.355, 1) 16s forwards;
+}
+
+@keyframes grow {
+    0%{
+        visibility: visible;
+        transform: scale(0.1);
+    }
+    80%{
+        visibility: visible;
+        transform: scale(1.2);
+    }
+    100%{
+        visibility: visible;
+        transform: scale(1);
+    }
+}
+.button .btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    position: absolute;
+    top: 30%;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.button:hover{
+    border: 2px solid var(--borders);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    transform: scale(1.2);
+    background-color: rgba(255, 0, 0, 0.638);
+    color: white;
+    cursor: pointer;
+}
+.btn_heart{
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    font-size: 150%;
+    top: var(--top);
+    left: var(--left);
+    color: red;
+    text-shadow: 0 0px 5px rgba(255, 255, 255, 0.622);
+    animation: beat 1s infinite;
+}
+.text_1 .happy_text{
+    width: 100%;
+    height: 50%;
+    font-family: cooper black;
+    font-size: 60px;
+    color: var(--text);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.text_1 .birthday_text{
+    width: 100%;
+    height: 50%;
+    font-family: cooper black;
+    font-size: 60px;
+    color: var(--secondary-text);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.happy, .birthday{
+    visibility: hidden;
+    opacity: 0;
+    animation: revaled 2s var(--d) linear forwards;
+}
+@keyframes revaled {
+    from {
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.main{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.main img{
+    position: absolute;
+    left: 50%;
+    bottom: -20%;
+    visibility: hidden;
+    opacity: 0;
+    animation: main_fade 1s 3s forwards;
+    z-index: -1;
+    
+}
+@keyframes main_fade {
+    100%{
+        visibility: visible;
+        opacity: 1;
+        left: 50%;
+        bottom: 6%;
+    }
+}
+.rajdeep, .singh{
+    position: absolute;
+     visibility: hidden;
+    font-size: 60px;
+    color: var(--third-text);
+    font-family: cooper black;
+}
+.rajdeep{
+    top: 60%;
+    right: 30%;
+    z-index: -2;
+    animation: motion 2s 3.3s forwards;
+    visibility: hidden;
+}
+.rajdeep_2{
+    position: absolute;
+    font-size: 60px;
+    color: transparent;
+    font-family: cooper black;
+    -webkit-text-stroke: 2px var(--borders);
+    visibility: hidden;
+    top: 60%;
+    right: 30%;
+    z-index: 1;
+    animation: motion 2s 3.3s forwards;
+}
+@keyframes motion {
+    0%{
+       
+        transform: translateX(-100px);
+    }
+    100%{
+        visibility: visible;
+        transform: translateX(0px);
+    }
+}
+.singh{
+    top: 70%;
+    right: 15%;
+    z-index: var(--index);
+    animation: motion_2 2s 3.3s forwards;
+}
+#singh{
+     visibility: hidden;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--borders);
+    animation: motion_2 2s 3.3s forwards;
+}
+@keyframes motion_2 {
+    0%{
+        transform: translateX(100px);
+    }
+    100%{
+        visibility: visible;
+        transform: translateX(0px);
+    }
+}
+.date_flex{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+@keyframes fade_in {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.date{
+    position: absolute;
+    width: 30%;
+    height: 15%;
+    right: 18%;
+    bottom: 1%;
+}
+.date img{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: fade_in 1s 3.5s forwards;
+}
+.date_value{
+    position: absolute;
+    bottom: 6%;
+    right: 25%;
+}
+.date_text{
+    display: inline-block;
+    font-size: 220%;
+    color: var(--third-text);
+    font-family: cooper black;
+    visibility: hidden;
+    animation: jumping 0.6s var(--d) ease-out forwards;
+}
+@keyframes jumping{
+    0%, 100%{
+        visibility: visible;
+        transform: scale(1);
+    }
+    50%{
+        visibility: visible;
+        transform: scale(2);
+    }
+
+}
+.page_box{
+    overflow: hidden;
+    display: flex;
+    position: absolute;
+    justify-items: center;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    background-color: var(--shadow);
+    z-index: 5;
+}
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.image{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: slideUp 1s forwards;
+}
+.image .img_1, .image .img_2, .image .img_3{
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 80%;
+    position: absolute;
+}
+.img_1{
+    z-index: 7;
+    animation: index_change_2 0.1s 17.45s linear forwards;
+}
+@keyframes index_change_2 {
+    to{
+        z-index: 8;
+    }
+}
+.img_2{
+    z-index: 6;
+    animation: index_change 0.1s 17s linear forwards;
+}
+.img_3{
+    z-index: 5;
+}
+@keyframes index_change {
+    to{
+        z-index: 7;
+    }
+}
+.left{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+}
+.left_img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    animation: z_hide 0.2s 17.05s linear forwards;
+}
+@keyframes z_hide{
+    to {
+        opacity: 0;
+    }
+}
+.left_img img{
+    position: absolute;
+    left: 32%;
+    width: 65%;
+    height: 70%;
+}
+.right{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 9;
+    animation: z_change 0.1s 16.9s linear forwards;
+}
+@keyframes z_change {
+    to{
+        z-index: 5;
+    }
+}
+.right_text{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right_text h1{
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    font-family: "dancing script";
+    font-size: 60px;
+    color: red;
+    text-shadow: 2px 2px 4px var(--shadow);
+    text-align: center;
+}
+.right_message{
+    position: absolute;
+    width: 67%;
+    height: 65%;
+    left: 2%;
+    top: 25%;
+}
+.message{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* font-family: ; */
+    font-size: 160%;
+    color: rgba(0, 0, 0, 0.831);
+    text-shadow: 0 2px 2px var(--shadow);
+    text-align: left;
+    padding: 2% 0 0 1%;
+    font-style: italic;
+}
+.page_2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    z-index: 10;
+    visibility: hidden;
+    animation: show_page2 0.2s 17.6s linear forwards;
+}
+@keyframes show_page2{
+    to{
+        visibility: visible;
+    }
+}
+.left2_img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+.left2_img img{
+    position: absolute;
+    top: 13%;
+    left: 17%;
+    width: 30%;
+    height: 75%;
+    opacity: 0.8;
+}
+.right_2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+.heading_right h1{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 12%;
+    left: 40%;
+    font-family: "dancing script";
+    font-size: 60px;
+    color: red;
+    text-shadow: 2px 2px 4px var(--shadow);
+    text-align: center;
+}
+.right_message2{
+    position: absolute;
+    width: 34%;
+    height: 65%;
+    top: 25%;
+    left: 50%;
+    /* font-family: ; */
+    font-size: 160%;
+    color: rgba(0, 0, 0, 0.831);
+    text-shadow: 0 2px 2px var(--shadow);
+    text-align: left;
+    padding: 0 0 0 1%;
+    font-style: italic;
+}
+.button_close {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  background-color: rgba(0, 0, 255, 0.345);
+  border: none;
+  top: 12%;
+  left: 82%;
+  border-radius: 7px;
+  transition: background 0.5s;
+  visibility: hidden;
+  opacity: 0;
+  animation: now_close 1s 30s linear forwards;
+  z-index: 12;
+}
+@keyframes now_close {
+
+    to{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.X {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  height: 1.5px;
+  background-color: rgb(255, 255, 255);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.Y {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  height: 1.5px;
+  background-color: #fff;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  top: -70%;
+  left: 50%;
+  width: 3em;
+  height: 1.7em;
+  font-size: 12px;
+  background-color: rgb(19, 22, 24);
+  color: rgb(187, 229, 236);
+  border: none;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.button_close:hover {
+  background-color: rgb(211, 21, 21);
+}
+
+.button_close:active {
+  background-color: rgb(130, 0, 0);
+}
+
+.button_close:hover > .close {
+  animation: close 0.2s forwards 0.25s;
+}
+
+@keyframes close {
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
